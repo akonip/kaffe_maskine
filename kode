@@ -1,0 +1,175 @@
+package machine;
+
+import java.util.Scanner;
+
+import static java.lang.System.*;
+
+//use enum
+
+    public class CoffeeMachine {
+
+
+
+        public static void main(String[] args) {
+
+
+
+            int aow = 400;
+            int aom = 540;
+            int aoc = 120;
+            int aod = 9;
+            int aon = 550;
+            int o = 0;
+
+            Scanner kodak = new Scanner(System.in);
+            while (o < 5) {
+
+                out.println("\n"+"Write action (buy, fill, take, remaining, exit):");
+
+
+                    String action = kodak.next();
+
+                    switch (action) {
+                        case "buy":
+
+                            out.println("\n"+" What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:");
+
+                            String y = kodak.next();
+                            if (y.equals("1")) {
+
+                                if (aow < 250) {
+                                    out.println("Sorry, not enough water!");
+                                } else if (aoc < 16) {
+                                    out.println("Sorry, not enough coffee beans!");
+                                } else if (aod < 1) {
+                                    out.println("Sorry, not enough disposable cups!");
+                                }
+
+                                if (aow >= 250 && aom >= 0 && aoc >= 16 && aod >= 1) {
+                                    out.println("I have enough resources, making you a coffee!");
+                                    aow = aow - 250;
+                                    aoc = aoc - 16;
+                                    aod = aod - 1;
+                                    aon = aon + 4;
+                                }
+
+
+
+
+                            }
+                            if (y.equals("2")) {
+
+                                if (aow >= 350 && aom >= 75 && aoc >= 20 && aod >= 1) {
+                                    out.println("I have enough resources, making you a coffee!");
+                                    aow = aow - 350;
+                                    aom = aom - 75;
+                                    aoc = aoc - 20;
+                                    aod = aod - 1;
+                                    aon = aon + 7;
+                                    break;
+                                }
+                                if (aow < 350) {
+                                    out.println("Sorry, not enough water!");
+                                } else if (aoc < 20) {
+                                    out.println("Sorry, not enough coffee beans!");
+                                } else if (aom < 75) {
+                                    out.println("Sorry, not enough milk!");
+                                } else if (aod < 1) {
+                                    out.println("Sorry, not enough disposable cups!");
+                                }
+
+
+
+
+
+                            }
+                            if (y.equals("3")) {
+                                if (aow >= 200 && aom >= 100 && aoc >= 12 && aod >= 1) {
+                                    out.println("I have enough resources, making you a coffee!");
+                                    aow = aow - 200;
+                                    aom = aom - 100;
+                                    aoc = aoc - 12;
+                                    aod = aod - 1;
+                                    aon = aon + 6;
+                                    break;
+                                }
+                                if (aow < 200) {
+                                    out.println("Sorry, not enough water!");
+                                } else if (aoc < 12) {
+                                    out.println("Sorry, not enough coffee beans!");
+                                } else if (aom < 100) {
+                                    out.println("Sorry, not enough milk!");
+                                } else if (aod < 1) {
+                                    out.println("Sorry, not enough disposable cups!");
+                                }
+
+
+
+
+
+                            }
+                            if (y.equals("back")){
+                                break;
+                            }
+                            break;
+
+                        case "fill":
+
+
+                            out.println("Write how many ml of water do you want to add:");
+                            int x = kodak.nextInt();
+                            out.println("Write how many ml of milk do you want to add:");
+                            int c = kodak.nextInt();
+                            out.println("Write how many grams of coffee beans do you want to add:");
+                            int v = kodak.nextInt();
+                            out.println("Write how many disposable cups of coffee do you want to add:");
+                            int b = kodak.nextInt();
+
+                            aow = aow + x;
+                            aom = aom + c;
+                            aoc = aoc + v;
+                            aod = aod + b;
+                            break;
+
+                        case "take":
+
+                            out.println("I gave you $" + aon);
+                            aon = 0;
+                            break;
+
+
+                        case "remaining":
+                            out.println("\n" + "The coffee machine has:");
+                            out.println(aow + " of water");
+                            out.println(aom + " of milk");
+                            out.println(aoc + " of coffee beans");
+                            out.println(aod + " of disposable cups");
+                            out.println("$" + aon + " of money");
+
+                            break;
+
+
+                        case "exit":
+                            exit(0);
+                            break;
+
+                        case "back":
+                            break;
+
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + action);
+                    }
+
+
+            }
+        }
+
+
+
+
+    }
+
+
+
+
+
